@@ -1,395 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FSSAI Registration | National Manufacturing Service Portal</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        :root { 
-    --fssai-orange: #f97316; 
-    --navy-corporate: #011f3f; 
-    --bg-light: #f8fafc;
-    --border-color: #e2e8f0;
-}
+        :root {
+            --fssai-orange: #f97316;
+            --navy-corporate: #011f3f;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+        }
 
-body { background-color: var(--bg-light); font-family: 'Outfit', sans-serif; color: #1e293b; scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
 
-/* Global Spacing Reduction */
-section { padding: 40px 0; } /* Reduced from 80px */
-.section-title { font-weight: 800; font-size: 2rem; margin-bottom: 30px; text-align: center; }
-.section-title span { color: var(--fssai-orange); }
+        /* Global Spacing Reduction */
+        section {
+            padding: 40px 0;
+        }
 
-/* Navbar & Hero */
-.navbar { background: white !important; border-bottom: 2px solid var(--fssai-orange); padding: 8px 0; }
-.brand-logo { font-weight: 800; font-size: 1.3rem; color: var(--navy-corporate) !important; }
-.brand-logo span { color: var(--fssai-orange); }
+        /* Reduced from 80px */
+        .section-title {
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-.hero-section {
-    background: linear-gradient(rgba(1, 31, 63, 0.8), rgba(1, 31, 63, 0.8)), 
+        .section-title span {
+            color: var(--fssai-orange);
+        }
+
+        /* Navbar & Hero */
+        .navbar {
+            background: white !important;
+            border-bottom: 2px solid var(--fssai-orange);
+            padding: 8px 0;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--navy-corporate) !important;
+        }
+
+        .brand-logo span {
+            color: var(--fssai-orange);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(1, 31, 63, 0.8), rgba(1, 31, 63, 0.8)),
                 url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1974');
-    background-size: cover; background-position: center; 
-    padding: 60px 20px 100px 20px; color: white; text-align: center;
-}
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px 100px 20px;
+            color: white;
+            text-align: center;
+        }
 
-/* Compact Form Card */
-.main-card {
-    background: white; border-radius: 16px; padding: 30px; margin-top: -60px;
-    max-width: 950px; margin-left: auto; margin-right: auto;
-    border: 1px solid var(--border-color); box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
+        /* Compact Form Card */
+        .main-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: -60px;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
 
-.upload-grid { 
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    gap: 10px; background: #fff7ed; padding: 15px; border-radius: 12px; 
-}
-.doc-item { background: white; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            background: #fff7ed;
+            padding: 15px;
+            border-radius: 12px;
+        }
 
-/* Benefit Cards */
-.benefit-card {
-    transition: 0.3s; background: white; border: 1px solid var(--border-color) !important;
-    padding: 20px !important;
-}
-.benefit-card i { font-size: 2rem !important; }
+        .doc-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
 
-/* Sidebar & Footer */
-.info-sidebar { background: #f1f5f9; border-left: 4px solid var(--navy-corporate); padding: 20px !important; }
-.footer-corporate { background: var(--navy-corporate); color: white; padding: 40px 0 20px; }
-.btn-orange { background: var(--fssai-orange); color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 700; }
+        /* Benefit Cards */
+        .benefit-card {
+            transition: 0.3s;
+            background: white;
+            border: 1px solid var(--border-color) !important;
+            padding: 20px !important;
+        }
+
+        .benefit-card i {
+            font-size: 2rem !important;
+        }
+
+        .btn-orange:disabled {
+            background: #fb923c;
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        /* Sidebar & Footer */
+        .info-sidebar {
+            background: #f1f5f9;
+            border-left: 4px solid var(--navy-corporate);
+            padding: 20px !important;
+        }
+
+        .footer-corporate {
+            background: var(--navy-corporate);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .btn-orange {
+            background: var(--fssai-orange);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
     </style>
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand brand-logo" href="#">FSSAI<span>-licensng</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#fssaiNav"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="fssaiNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#benefits">Core Advantages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item ms-lg-3"><a class="btn btn-orange" href="#registration-form">Start Registration</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<header class="hero-section">
-    <div class="container">
-        <h1 class="display-3 fw-bold">Professional FSSAI Compliance</h1>
-        <p class="lead opacity-75 mt-3">Strategic Licensing Support for Manufacturing Plants, Large-Scale Processors & Global Export Units</p>
-         <p class="lead opacity-75 mt-3">Get Licensed now by registering with us</p>
-    </div>
-</header>
-
-<div id="registration-form" class="container">
-    <div class="main-card">
-        <form id="fssaiForm">
-            <h4 class="fw-bold mb-4"><i class="bi bi-file-earmark-plus me-2 text-orange"></i> Application Details</h4>
-            <div class="row g-4 mb-5">
-                <div class="col-md-4"><label class="form-label small fw-bold">Full Name</label><input type="text" class="form-control" id="u_name" required></div>
-                <div class="col-md-4"><label class="form-label small fw-bold">Mobile No.</label><input type="tel" class="form-control" id="u_mobile" maxlength="10" required></div>
-                <div class="col-md-4"><label class="form-label small fw-bold">Email</label><input type="email" class="form-control" id="u_email" required></div>
-                <div class="col-md-6"><label class="form-label small fw-bold">Business Name</label><input type="text" class="form-control" id="u_biz" required></div>
-                <div class="col-md-6">
-                    <label class="form-label small fw-bold">License Type</label>
-                    <select class="form-select" id="license_type" onchange="toggleSpecialDocs()">
-                        <option value="Basic">Basic Registration</option>
-                        <option value="State">State License</option>
-                        <option value="Central">Central License</option>
-                    </select>
-                </div>
-                <div class="col-md-4"><label class="form-label small fw-bold">City</label><input type="text" class="form-control" id="u_city" required></div>
-                <div class="col-md-4"><label class="form-label small fw-bold">Pincode</label><input type="text" class="form-control" id="u_pin" required></div>
-                <div class="col-md-4"><label class="form-label small fw-bold">State</label><input type="text" class="form-control" id="u_state" required></div>
-                <div class="col-12"><label class="form-label small fw-bold">Factory Address</label><input type="text" class="form-control" id="u_addr" required></div>
-            </div>
-
-            <h5 class="fw-bold mb-4"><i class="bi bi-cloud-arrow-up-fill me-2 text-warning"></i> Upload Documentation</h5>
-            <div class="upload-grid mb-4">
-                <div class="doc-item"><label class="small fw-bold">ID Proof</label><input type="file" class="form-control form-control-sm" id="up_id" required></div>
-                <div class="doc-item"><label class="small fw-bold">Photo</label><input type="file" class="form-control form-control-sm" id="up_photo" required></div>
-                <div class="doc-item"><label class="small fw-bold">Premises Proof</label><input type="file" class="form-control form-control-sm" id="up_premises" required></div>
-                <div class="doc-item"><label class="small fw-bold">Constitution</label><input type="file" class="form-control form-control-sm" id="up_const" required></div>
-                <div class="doc-item"><label class="small fw-bold">Declaration</label><input type="file" class="form-control form-control-sm" id="up_decl" required></div>
-                <div class="doc-item"><label class="small fw-bold">FSMS Plan</label><input type="file" class="form-control form-control-sm" id="up_fsms" required></div>
-                
-                <div class="doc-item state-only d-none"><label class="small fw-bold text-success">Machinery List</label><input type="file" class="form-control form-control-sm" id="up_machinery"></div>
-                <div class="doc-item state-only d-none"><label class="small fw-bold text-success">Water Report</label><input type="file" class="form-control form-control-sm" id="up_water"></div>
-                <div class="doc-item central-only d-none"><label class="small fw-bold text-primary">IEC Certificate</label><input type="file" class="form-control form-control-sm" id="up_iec"></div>
-                <div class="doc-item central-only d-none"><label class="small fw-bold text-primary">Analysis Report</label><input type="file" class="form-control form-control-sm" id="up_analysis"></div>
-            </div>
-            <button type="submit" class="btn btn-orange w-100 py-3">Submit Application</button>
-        </form>
-    </div>
-</div>
-
-<section id="benefits" class="bg-white">
-    <div class="container">
-        <h2 class="section-title">Compliance <span>Advantage</span></h2>
-        
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-shield-check text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Legal Immunity</h5>
-                    <p class="small text-muted">Avoid heavy penalties (up to ₹5 Lakhs) and legal notices from food inspectors through proactive compliance management.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-graph-up-arrow text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Market Expansion</h5>
-                    <p class="small text-muted">FSSAI license is mandatory for listing on Swiggy, Zomato, Amazon, or retailing in major supermarkets like Reliance Fresh.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-award text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Consumer Trust</h5>
-                    <p class="small text-muted">Displaying the 14-digit FSSAI logo on your packaging builds instant credibility and ensures quality assurance for customers.</p>
-                </div>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="#">FSSAI<span>-licensng</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#fssaiNav"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="fssaiNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#benefits">Core Advantages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-orange" href="#registration-form">Start
+                            Registration</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-box-seam text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Export Ready</h5>
-                    <p class="small text-muted">Our Central License support helps manufacturing units meet international safety standards for global food export.</p>
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Professional FSSAI Compliance</h1>
+            <p class="lead opacity-75 mt-3">Strategic Licensing Support for Manufacturing Plants, Large-Scale Processors
+                & Global Export Units</p>
+            <p class="lead opacity-75 mt-3">Get Licensed now by registering with us</p>
+        </div>
+    </header>
+
+    <div id="registration-form" class="container">
+        <div class="main-card">
+            <form id="fssaiForm">
+                <h4 class="fw-bold mb-4"><i class="bi bi-file-earmark-plus me-2 text-orange"></i> Application Details
+                </h4>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4"><label class="form-label small fw-bold">Full Name</label><input type="text"
+                            class="form-control" id="u_name" required></div>
+                    <div class="col-md-4"><label class="form-label small fw-bold">Mobile No.</label><input type="tel"
+                            class="form-control" id="u_mobile" maxlength="10" required></div>
+                    <div class="col-md-4"><label class="form-label small fw-bold">Email</label><input type="email"
+                            class="form-control" id="u_email" required></div>
+                    <div class="col-md-6"><label class="form-label small fw-bold">Business Name</label><input
+                            type="text" class="form-control" id="u_biz" required></div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">License Type</label>
+                        <select class="form-select" id="license_type" onchange="toggleSpecialDocs()">
+                            <option value="Basic">Basic Registration</option>
+                            <option value="State">State License</option>
+                            <option value="Central">Central License</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4"><label class="form-label small fw-bold">City</label><input type="text"
+                            class="form-control" id="u_city" required></div>
+                    <div class="col-md-4"><label class="form-label small fw-bold">Pincode</label><input type="text"
+                            class="form-control" id="u_pin" required></div>
+                    <div class="col-md-4"><label class="form-label small fw-bold">State</label><input type="text"
+                            class="form-control" id="u_state" required></div>
+                    <div class="col-12"><label class="form-label small fw-bold">Factory Address</label><input
+                            type="text" class="form-control" id="u_addr" required></div>
+                </div>
+
+                <h5 class="fw-bold mb-4"><i class="bi bi-cloud-arrow-up-fill me-2 text-warning"></i> Upload
+                    Documentation</h5>
+                <div class="upload-grid mb-4">
+                    <div class="doc-item"><label class="small fw-bold">ID Proof</label><input type="file"
+                            class="form-control form-control-sm" id="up_id" required></div>
+                    <div class="doc-item"><label class="small fw-bold">Photo</label><input type="file"
+                            class="form-control form-control-sm" id="up_photo" required></div>
+                    <div class="doc-item"><label class="small fw-bold">Premises Proof</label><input type="file"
+                            class="form-control form-control-sm" id="up_premises" required></div>
+                    <div class="doc-item"><label class="small fw-bold">Constitution</label><input type="file"
+                            class="form-control form-control-sm" id="up_const" required></div>
+                    <div class="doc-item"><label class="small fw-bold">Declaration</label><input type="file"
+                            class="form-control form-control-sm" id="up_decl" required></div>
+                    <div class="doc-item"><label class="small fw-bold">FSMS Plan</label><input type="file"
+                            class="form-control form-control-sm" id="up_fsms" required></div>
+
+                    <div class="doc-item state-only d-none"><label class="small fw-bold text-success">Machinery
+                            List</label><input type="file" class="form-control form-control-sm" id="up_machinery"></div>
+                    <div class="doc-item state-only d-none"><label class="small fw-bold text-success">Water
+                            Report</label><input type="file" class="form-control form-control-sm" id="up_water"></div>
+                    <div class="doc-item central-only d-none"><label class="small fw-bold text-primary">IEC
+                            Certificate</label><input type="file" class="form-control form-control-sm" id="up_iec">
+                    </div>
+                    <div class="doc-item central-only d-none"><label class="small fw-bold text-primary">Analysis
+                            Report</label><input type="file" class="form-control form-control-sm" id="up_analysis">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-orange w-100 py-3" id="submitBtn">
+                    <span id="btnText">Submit Application</span>
+                    <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status"
+                        aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <section id="benefits" class="bg-white">
+        <div class="container">
+            <h2 class="section-title">Compliance <span>Advantage</span></h2>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-shield-check text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Legal Immunity</h5>
+                        <p class="small text-muted">Avoid heavy penalties (up to ₹5 Lakhs) and legal notices from food
+                            inspectors through proactive compliance management.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-graph-up-arrow text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Market Expansion</h5>
+                        <p class="small text-muted">FSSAI license is mandatory for listing on Swiggy, Zomato, Amazon, or
+                            retailing in major supermarkets like Reliance Fresh.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-award text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Consumer Trust</h5>
+                        <p class="small text-muted">Displaying the 14-digit FSSAI logo on your packaging builds instant
+                            credibility and ensures quality assurance for customers.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-lightning-charge text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Fast-Track FoSCoS</h5>
-                    <p class="small text-muted">Direct digital filing with the national portal ensures your application bypasses common administrative delays.</p>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-box-seam text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Export Ready</h5>
+                        <p class="small text-muted">Our Central License support helps manufacturing units meet
+                            international safety standards for global food export.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
-                    <i class="bi bi-bell text-orange fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Renewal Alerts</h5>
-                    <p class="small text-muted">Never let your license expire. Our system sends automated alerts 60 days before your license reaches its end date.</p>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-lightning-charge text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Fast-Track FoSCoS</h5>
+                        <p class="small text-muted">Direct digital filing with the national portal ensures your
+                            application bypasses common administrative delays.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card h-100 p-4 shadow-sm rounded-4 border">
+                        <i class="bi bi-bell text-orange fs-1 mb-3"></i>
+                        <h5 class="fw-bold">Renewal Alerts</h5>
+                        <p class="small text-muted">Never let your license expire. Our system sends automated alerts 60
+                            days before your license reaches its end date.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-<section id="faq" class="bg-light">
-    <div class="container">
-        <h2 class="section-title">Common <span>Questions</span></h2>
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="accordion accordion-flush custom-faq" id="fssaiAccordion">
-                    
-                    <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                                Which license type do I need for my business?
-                            </button>
-                        </h2>
-                        <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#fssaiAccordion">
-                            <div class="accordion-body text-muted">
-                                It depends on your annual turnover: 
-                                <ul>
-                                    <li><strong>Basic Registration:</strong> Turnover below ₹12 Lakhs.</li>
-                                    <li><strong>State License:</strong> Turnover between ₹12 Lakhs - ₹20 Crores.</li>
-                                    <li><strong>Central License:</strong> Turnover above ₹20 Crores or for Import/Export businesses.</li>
-                                </ul>
+    <section id="faq" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Common <span>Questions</span></h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion accordion-flush custom-faq" id="fssaiAccordion">
+
+                        <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#q1">
+                                    Which license type do I need for my business?
+                                </button>
+                            </h2>
+                            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#fssaiAccordion">
+                                <div class="accordion-body text-muted">
+                                    It depends on your annual turnover:
+                                    <ul>
+                                        <li><strong>Basic Registration:</strong> Turnover below ₹12 Lakhs.</li>
+                                        <li><strong>State License:</strong> Turnover between ₹12 Lakhs - ₹20 Crores.
+                                        </li>
+                                        <li><strong>Central License:</strong> Turnover above ₹20 Crores or for
+                                            Import/Export businesses.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#q2">
+                                    What is the validity period of an FSSAI license?
+                                </button>
+                            </h2>
+                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
+                                <div class="accordion-body text-muted">
+                                    An FSSAI license can be issued for a period of <strong>1 to 5 years</strong>. You
+                                    can choose the duration during the application process. Renewals must be filed at
+                                    least 30 days before the expiry date.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#q3">
+                                    Is a separate license required for different states?
+                                </button>
+                            </h2>
+                            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
+                                <div class="accordion-body text-muted">
+                                    Yes. FSSAI licenses are <strong>location-specific</strong>. If you have
+                                    manufacturing units or warehouses in multiple states, you need a State/Basic license
+                                    for each location and one <strong>Central License</strong> for your Head Office.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#q4">
+                                    What is an FSMS Plan and is it mandatory?
+                                </button>
+                            </h2>
+                            <div id="q4" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
+                                <div class="accordion-body text-muted">
+                                    <strong>Food Safety Management System (FSMS)</strong> plan is a mandatory document
+                                    for State and Central licenses. It outlines the steps your business takes to ensure
+                                    food safety, including hygiene, storage, and processing standards.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="bg-white">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h3 class="fw-bold mb-4">How It <span>Works</span></h3>
+                    <div class="row g-3">
+                        <div class="col-sm-4">
+                            <div class="text-center p-3 border rounded-3 h-100">
+                                <div class="h4 fw-bold text-orange">01</div>
+                                <p class="small fw-bold mb-1">Submit Details</p>
+                                <p class="x-small text-muted mb-0">Upload proofs via our portal.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-center p-3 border rounded-3 h-100">
+                                <div class="h4 fw-bold text-orange">02</div>
+                                <p class="small fw-bold mb-1">Verification</p>
+                                <p class="x-small text-muted mb-0">Experts review FSMS plans.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-center p-3 border rounded-3 h-100">
+                                <div class="h4 fw-bold text-orange">03</div>
+                                <p class="small fw-bold mb-1">Get License</p>
+                                <p class="x-small text-muted mb-0">Receive digital copy via email.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="info-sidebar rounded-3">
+                        <h6 class="fw-bold"><i class="bi bi-info-circle me-2 text-orange"></i>Quick Checklist</h6>
+                        <ul class="list-unstyled x-small mb-0">
 
-                    <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                                What is the validity period of an FSSAI license?
-                            </button>
-                        </h2>
-                        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
-                            <div class="accordion-body text-muted">
-                                An FSSAI license can be issued for a period of <strong>1 to 5 years</strong>. You can choose the duration during the application process. Renewals must be filed at least 30 days before the expiry date.
-                            </div>
-                        </div>
+                            <li><i class="bi bi-check2 text-success me-1"></i> Signed FSMS declaration.</li>
+                            <li><i class="bi bi-check2 text-success me-1"></i> NABL Water Report (if required).</li>
+                        </ul>
                     </div>
-
-                    <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
-                                Is a separate license required for different states?
-                            </button>
-                        </h2>
-                        <div id="q3" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
-                            <div class="accordion-body text-muted">
-                                Yes. FSSAI licenses are <strong>location-specific</strong>. If you have manufacturing units or warehouses in multiple states, you need a State/Basic license for each location and one <strong>Central License</strong> for your Head Office.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
-                                What is an FSMS Plan and is it mandatory?
-                            </button>
-                        </h2>
-                        <div id="q4" class="accordion-collapse collapse" data-bs-parent="#fssaiAccordion">
-                            <div class="accordion-body text-muted">
-                                <strong>Food Safety Management System (FSMS)</strong> plan is a mandatory document for State and Central licenses. It outlines the steps your business takes to ensure food safety, including hygiene, storage, and processing standards.
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section id="about" class="bg-white">
-    <div class="container">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-7">
-                <h3 class="fw-bold mb-4">How It <span>Works</span></h3>
-                <div class="row g-3">
-                    <div class="col-sm-4">
-                        <div class="text-center p-3 border rounded-3 h-100">
-                            <div class="h4 fw-bold text-orange">01</div>
-                            <p class="small fw-bold mb-1">Submit Details</p>
-                            <p class="x-small text-muted mb-0">Upload proofs via our portal.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="text-center p-3 border rounded-3 h-100">
-                            <div class="h4 fw-bold text-orange">02</div>
-                            <p class="small fw-bold mb-1">Verification</p>
-                            <p class="x-small text-muted mb-0">Experts review FSMS plans.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="text-center p-3 border rounded-3 h-100">
-                            <div class="h4 fw-bold text-orange">03</div>
-                            <p class="small fw-bold mb-1">Get License</p>
-                            <p class="x-small text-muted mb-0">Receive digital copy via email.</p>
-                        </div>
-                    </div>
+    </section>
+
+    <footer class="footer-corporate">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h4 class="brand-logo text-white">FSSAI<span>PORTAL</span></h4>
+                    <p class="mt-4 small opacity-75">National authorized consultancy for industrial food safety
+                        documentation and digital compliance filing.</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h6 class="footer-heading">Support Helpline</h6>
+                    <p class="text-orange fw-bold fs-4">+91 96386 04860</p>
+                    <p class="small opacity-50">Mon - Sat (9 AM - 7 PM)</p>
+                </div>
+                <div class="col-lg-4 text-md-end text-center">
+                    <h6 class="footer-heading">Project Head</h6>
+                    <p class="fw-bold mb-0">KEYUR PATEL</p>
+                    <p class="small opacity-50"></p>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="info-sidebar rounded-3">
-                    <h6 class="fw-bold"><i class="bi bi-info-circle me-2 text-orange"></i>Quick Checklist</h6>
-                    <ul class="list-unstyled x-small mb-0">
-                       
-                        <li><i class="bi bi-check2 text-success me-1"></i> Signed FSMS declaration.</li>
-                        <li><i class="bi bi-check2 text-success me-1"></i> NABL Water Report (if required).</li>
-                    </ul>
-                </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="small opacity-25 mb-0">© 2026 FSSAI Registration Service. Built for Academic Portfolio
+                    Purposes.</p>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<footer class="footer-corporate">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-4">
-                <h4 class="brand-logo text-white">FSSAI<span>PORTAL</span></h4>
-                <p class="mt-4 small opacity-75">National authorized consultancy for industrial food safety documentation and digital compliance filing.</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <h6 class="footer-heading">Support Helpline</h6>
-                <p class="text-orange fw-bold fs-4">+91 96386 04860</p>
-                <p class="small opacity-50">Mon - Sat (9 AM - 7 PM)</p>
-            </div>
-            <div class="col-lg-4 text-md-end text-center">
-                <h6 class="footer-heading">Project Head</h6>
-                <p class="fw-bold mb-0">KEYUR PATEL</p>
-                <p class="small opacity-50"></p>
-            </div>
-        </div>
-        <div class="border-top border-secondary mt-5 pt-4 text-center">
-            <p class="small opacity-25 mb-0">© 2026 FSSAI Registration Service. Built for Academic Portfolio Purposes.</p>
-        </div>
-    </div>
-</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzYO1cdiv21pERZW7HsvYlCUYns3geFy0SBZZiJYJ_uUlTNyuip4vyjFN3KE0sO1hqr/exec';
+        const form = document.getElementById('fssaiForm');
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzYO1cdiv21pERZW7HsvYlCUYns3geFy0SBZZiJYJ_uUlTNyuip4vyjFN3KE0sO1hqr/exec'; 
-    const form = document.getElementById('fssaiForm');
-
-    function toggleSpecialDocs() {
-        const type = document.getElementById('license_type').value;
-        document.querySelectorAll('.state-only, .central-only').forEach(e => e.classList.add('d-none'));
-        if(type === 'State') document.querySelectorAll('.state-only').forEach(e => e.classList.remove('d-none'));
-        if(type === 'Central') document.querySelectorAll('.central-only').forEach(e => e.classList.remove('d-none'));
-    }
-
-    const toBase64 = file => new Promise((resolve, reject) => {
-        if (!file) resolve("");
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-
-    form.onsubmit = async function(e) {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        btn.innerText = "Wait Till Submit";
-        btn.disabled = true;
-
-        try {
-            const getB64 = async (id) => {
-                const el = document.getElementById(id);
-                return el && el.files[0] ? await toBase64(el.files[0]) : "";
-            };
-
-            const formData = {
-                name: document.getElementById('u_name').value,
-                mobile: document.getElementById('u_mobile').value,
-                email: document.getElementById('u_email').value,
-                biz: document.getElementById('u_biz').value,
-                city: document.getElementById('u_city').value,
-                pin: document.getElementById('u_pin').value,
-                state: document.getElementById('u_state').value,
-                address: document.getElementById('u_addr').value,
-                license_type: document.getElementById('license_type').value,
-                idData: await getB64('up_id'),
-                photoData: await getB64('up_photo'),
-                premisesData: await getB64('up_premises'),
-                constData: await getB64('up_const'),
-                declData: await getB64('up_decl'),
-                fsmsData: await getB64('up_fsms'),
-                machineryData: await getB64('up_machinery'),
-                waterData: await getB64('up_water'),
-                iecData: await getB64('up_iec'),
-                analysisData: await getB64('up_analysis')
-            };
-
-            const response = await fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData)});
-            const result = await response.json();
-
-            if(result.result === "success") {
-                alert("Success! Your Registration has been recorded.");
-                form.reset();
-                toggleSpecialDocs();
-            } else { throw new Error(result.error); }
-        } catch (error) {
-            alert("Submission Error: " + error.message);
-        } finally {
-            btn.disabled = false;
-            btn.innerText = "";
+        function toggleSpecialDocs() {
+            const type = document.getElementById('license_type').value;
+            document.querySelectorAll('.state-only, .central-only').forEach(e => e.classList.add('d-none'));
+            if (type === 'State') document.querySelectorAll('.state-only').forEach(e => e.classList.remove('d-none'));
+            if (type === 'Central') document.querySelectorAll('.central-only').forEach(e => e.classList.remove('d-none'));
         }
-    };
-</script>
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            if (!file) resolve("");
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+
+            // Get button and text elements
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+
+            // Start Loading State
+            btn.disabled = true;
+            btnText.innerText = "Processing...";
+            btnSpinner.classList.remove('d-none');
+
+            try {
+                const getB64 = async (id) => {
+                    const el = document.getElementById(id);
+                    return el && el.files[0] ? await toBase64(el.files[0]) : "";
+                };
+
+                const formData = {
+                    name: document.getElementById('u_name').value,
+                    mobile: document.getElementById('u_mobile').value,
+                    email: document.getElementById('u_email').value,
+                    biz: document.getElementById('u_biz').value,
+                    city: document.getElementById('u_city').value,
+                    pin: document.getElementById('u_pin').value,
+                    state: document.getElementById('u_state').value,
+                    address: document.getElementById('u_addr').value,
+                    license_type: document.getElementById('license_type').value,
+                    idData: await getB64('up_id'),
+                    photoData: await getB64('up_photo'),
+                    premisesData: await getB64('up_premises'),
+                    constData: await getB64('up_const'),
+                    declData: await getB64('up_decl'),
+                    fsmsData: await getB64('up_fsms'),
+                    machineryData: await getB64('up_machinery'),
+                    waterData: await getB64('up_water'),
+                    iecData: await getB64('up_iec'),
+                    analysisData: await getB64('up_analysis')
+                };
+
+                const response = await fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) });
+                const result = await response.json();
+
+                if (result.result === "success") {
+                    alert("Success! Your Registration has been recorded.");
+                    form.reset();
+                    toggleSpecialDocs();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                alert("Submission Error: " + error.message);
+            } finally {
+                // Reset Button State
+                btn.disabled = false;
+                btnText.innerText = "Submit Application";
+                btnSpinner.classList.add('d-none');
+            }
+        };
+    </script>
 </body>
+
 </html>
